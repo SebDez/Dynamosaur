@@ -5,7 +5,7 @@ import Exception from '../lib/util/Exception';
 import Request from '../lib/Request';
 
 const expect = chai.expect;
-
+/*
 describe('QueryBuilder', () => {
 
   describe('QueryBuilder#getIn', () => {
@@ -22,4 +22,4 @@ describe('QueryBuilder', () => {
       expect(new QueryBuilder().getIn('user').query.TableName).to.equals('user');
     });
   });
-});
+});*/

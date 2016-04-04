@@ -28,8 +28,7 @@ SEE ./TestFile.js for multiple examples
 
 ## License
 
-MIT © [Marvin Frachet](http://marvinfrachet.com)
-MIT © [Sébastien Dez](http://sebdez.fr)
+MIT © [Marvin Frachet](http://marvinfrachet.com), [Sébastien Dez](http://sebdez.fr)
 
 [npm-image]: https://badge.fury.io/js/dynamosaur.svg
 [npm-url]: https://npmjs.org/package/dynamosaur
