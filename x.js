@@ -1,6 +1,5 @@
 var Dynamosaur = require('./');
 
-
 /*
 new Dynamosaur()
 .getIn('Movies')
@@ -8,30 +7,23 @@ new Dynamosaur()
 .then(res=>{ console.log('GET ALL'); console.log(res.data.Items);}, err => {console.log('GET ALL'); console.log(err);});
 */
 
-
-
+// =, <, <=, >, >=
 new Dynamosaur()
 .getIn('Movies')
-.where('year', '=', 1933)
+.where('year', '=', 1985)
+.or('title', '=', 'The Breakfast Club')
 .exec()
 .then(res=>{ console.log('GET ONE'); console.log(res.data.Items);}, err => { console.log('GET ONE'); console.log(err);});
-
-
 /*
 new Dynamosaur()
-.putIn('Movies')
-.aNew({
-  "year": {
-    "N": "1933"
-  },
-  "title": {
-    "S": "Marvin à la piscine"
-  }})
-.then(res=>{ console.log('PUT ONE'); console.log(res.data.Items);}, err => { console.log('PUT ONE'); console.log(err);});*/
+.putIn('user')
+.aNew({'_id':{'S':'4'}, 'name':{'S':'seb222'}})
+.then(res=>{ console.log('PUT ONE'); console.log(res.data);}, err => { console.log('PUT ONE'); console.log(err);});
 
 new Dynamosaur()
-.updateIn('Movies')
-.toModify({'omega':892,'okay':{'bof':{'N':42}}})
-.withMultipleId({'year':1933, 'title':'King Kong'})
+.updateIn('user')
+.toModify({'totototoot':12,'okay':{'bof':42}})
+.withId({'_id':'2'})
 .exec()
-.then(res=>{ console.log('UOPDATE ONE'); console.log(res.data.Items);}, err => { console.log('UOPDATE ONE'); console.log(err);});
+.then(res=>{ console.log('UOPDATE ONE'); console.log(res.data);}, err => { console.log('UOPDATE ONE'); console.log(err);});
+*/
