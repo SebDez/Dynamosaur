@@ -1,7 +1,7 @@
 import chai from 'chai';
 import assert from 'assert';
 import QueryBuilder from '../lib/QueryBuilder';
-import Exception from '../lib/Exception';
+import Exception from '../lib/util/Exception';
 import Request from '../lib/Request';
 
 const expect = chai.expect;

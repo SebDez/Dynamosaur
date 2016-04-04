@@ -2,7 +2,7 @@ var Dynamosaur = require('./');
 
 /*
 new Dynamosaur()
-.getIn('Movies')
+.getIn('user')
 .exec()
 .then(res=>{ console.log('GET ALL'); console.log(res.data.Items);}, err => {console.log('GET ALL'); console.log(err);});
 */
@@ -10,16 +10,18 @@ new Dynamosaur()
 // =, <, <=, >, >=
 new Dynamosaur()
 .getIn('Movies')
-.where('year', '=', 1985)
-.or('title', '=', 'The Breakfast Club')
+.where('year', '>', {'N':'1200'})
 .exec()
 .then(res=>{ console.log('GET ONE'); console.log(res.data.Items);}, err => { console.log('GET ONE'); console.log(err);});
+
 /*
 new Dynamosaur()
 .putIn('user')
-.aNew({'_id':{'S':'4'}, 'name':{'S':'seb222'}})
+.aNew({'_id':{'S':'6'}, 'totototoot':{'N':'42'}})
 .then(res=>{ console.log('PUT ONE'); console.log(res.data);}, err => { console.log('PUT ONE'); console.log(err);});
+*/
 
+/*
 new Dynamosaur()
 .updateIn('user')
 .toModify({'totototoot':12,'okay':{'bof':42}})
