@@ -12,21 +12,24 @@ $ npm install --save dynamosaur
 ```js
 var Dynamosaur = require('dynamosaur');
 
-
-
 var qb = new QueryBuilder();
 
-qb.getIn('user')
-.where('')
-.and('')
-.exec()
-
-dynamosaur('Rainbow');
+new Dynamosaur()
+  .getIn('Movies')
+  .exec()
+  .then(res => {
+    console.log('## GET ALL MOVIES : ', res.data.Items);
+  }, err => {
+    console.log('## ERROR ON GET ALL MOVIES : ',err );
+  });
 ```
+
+SEE ./TestFile.js for multiple examples
+
 ## License
 
 MIT © [Marvin Frachet](http://marvinfrachet.com)
-
+MIT © [Sébastien Dez](http://sebdez.fr)
 
 [npm-image]: https://badge.fury.io/js/dynamosaur.svg
 [npm-url]: https://npmjs.org/package/dynamosaur
