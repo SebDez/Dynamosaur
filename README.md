@@ -22,6 +22,11 @@ new Dynamosaur()
   }, err => {
     console.log('## ERROR ON GET ALL MOVIES : ',err );
   });
+
+You can define another region for dynamoDB like this
+new Dynamosaur()
+  .getIn('Movies', 'myregion')
+  
 ```
 
 SEE ./TestFile.js for multiple examples
