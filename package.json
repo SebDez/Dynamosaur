@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "Dynamodb query builder",
   "homepage": "",
-  "author": {
+  "contributors": [{
     "name": "Marvin Frachet",
     "email": "marvin.frachet@gmail.com",
     "url": "http://marvinfrachet.com"
-  },
+  },{
+    "name": "Sébastien Dez",
+    "email": "sebdez.dev@gmail.com",
+    "url": "http://sebdez.fr"
+  }],
   "files": [
     "dist"
   ],
@@ -41,7 +45,7 @@
       "mocha": true
     }
   },
-  "repository": "Skahrz/dynamosaur",
+  "repository": "SebDez/Dynamosaur",
   "scripts": {
     "prepublish": "gulp prepublish",
     "test": "gulp"
