@@ -12,8 +12,6 @@ $ npm install --save dynamosaur
 ```js
 var Dynamosaur = require('dynamosaur');
 
-var qb = new QueryBuilder();
-
 new Dynamosaur()
   .getIn('Movies')
   .exec()
@@ -24,9 +22,9 @@ new Dynamosaur()
   });
 
 You can define another region for dynamoDB like this
-new Dynamosaur()
-  .getIn('Movies', 'myregion')
-  
+new Dynamosaur('myregion')
+  .getIn('Movies')
+
 ```
 
 SEE ./TestFile.js for multiple examples

@@ -3,9 +3,11 @@ var Dynamosaur = require('./');
 //SAMPLE DATA FILE FROM AMAZON TUTORIAL
 //http://docs.aws.amazon.com/amazondynamodb/latest/gettingstartedguide/GettingStarted.NodeJs.02.html#GettingStarted.NodeJs.02.01
 
+var region = 'eu-west-1'; //default is eu-west-1
+
 //##########################################################
 //GET MOVIES
-new Dynamosaur()
+new Dynamosaur(region)
   .getIn('Movies')
   .exec()
   .then(res => {
@@ -17,7 +19,7 @@ new Dynamosaur()
 //##########################################################
 //GET MOVIES BY CRITERIA
 //Simple case
-new Dynamosaur()
+new Dynamosaur(region)
   .getIn('Movies')
   .where('title', '=', {'S': 'King Kong'})
   .exec()
@@ -28,7 +30,7 @@ new Dynamosaur()
   });
 
 //With AND
-new Dynamosaur()
+new Dynamosaur(region)
   .getIn('Movies')
   .where('title', '=', {'S': 'King Kong'})
   .and('year', '=', {'N': '1933'})
@@ -40,7 +42,7 @@ new Dynamosaur()
   });
 
 //With OR
-new Dynamosaur()
+new Dynamosaur(region)
   .getIn('Movies')
   .where('title', '=', {'S': 'King Kong'})
   .or('title', '=', {'S':'Lifeboat'})
@@ -52,7 +54,7 @@ new Dynamosaur()
   });
 
 //With OPERATOR among =, <, <=, >, >=
-new Dynamosaur()
+new Dynamosaur(region)
   .getIn('Movies')
   .where('year', '>', {'N': '1991'})
   .exec()
@@ -66,7 +68,7 @@ new Dynamosaur()
 
 //##########################################################
 
-new Dynamosaur()
+new Dynamosaur(region)
   .putIn('Movies')
   .aNew({'year': {'N': '2016'},'title': {'S': 'Star Wars VII'}})
   .then(res => {
@@ -78,7 +80,7 @@ new Dynamosaur()
 
 //##########################################################
 
-new Dynamosaur()
+new Dynamosaur(region)
 .updateIn('Movies')
 .toModify({'info':{'directors':['JJ ABRAMS']}})
 .withId({'year': 2016,'title': 'Star Wars VII'})
