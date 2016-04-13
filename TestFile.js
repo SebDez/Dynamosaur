@@ -4,7 +4,7 @@ var Dynamosaur = require('./');
 //http://docs.aws.amazon.com/amazondynamodb/latest/gettingstartedguide/GettingStarted.NodeJs.02.html#GettingStarted.NodeJs.02.01
 
 var region = 'eu-west-1'; //default is eu-west-1
-/*
+
 //##########################################################
 //GET MOVIES
 new Dynamosaur(region)
@@ -89,7 +89,17 @@ new Dynamosaur(region)
   console.log('## UPDATE MOVIE ', res.data);
 }, err => {
   console.log('## ERROR WHILE UPDATING MOVIE : ',err );
-});*/
+});
 
 //##########################################################
 //REMOVE MOVIE
+new Dynamosaur(region)
+.deleteIn('Movies')
+.whenKey('year',2016)
+.andKey('title','Star Wars VII')
+.exec()
+.then(res => {
+  console.log('## DELETE MOVIE ', res.data);
+}, err => {
+  console.log('## ERROR WHILE DELETING MOVIE : ',err );
+});
