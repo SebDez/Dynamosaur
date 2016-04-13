@@ -4,7 +4,7 @@ var Dynamosaur = require('./');
 //http://docs.aws.amazon.com/amazondynamodb/latest/gettingstartedguide/GettingStarted.NodeJs.02.html#GettingStarted.NodeJs.02.01
 
 var region = 'eu-west-1'; //default is eu-west-1
-
+/*
 //##########################################################
 //GET MOVIES
 new Dynamosaur(region)
@@ -89,4 +89,7 @@ new Dynamosaur(region)
   console.log('## UPDATE MOVIE ', res.data);
 }, err => {
   console.log('## ERROR WHILE UPDATING MOVIE : ',err );
-});
+});*/
+
+//##########################################################
+//REMOVE MOVIE

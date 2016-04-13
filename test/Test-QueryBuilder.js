@@ -5,6 +5,7 @@ import Exception from '../lib/util/Exception';
 import RequestGet from '../lib/RequestGet';
 import RequestPut from '../lib/RequestPut';
 import RequestUpdate from '../lib/RequestUpdate';
+import RequestDelete from '../lib/RequestDelete';
 
 const expect = chai.expect;
 
@@ -52,6 +53,21 @@ describe('QueryBuilder', () => {
 
     it('should return a RequestPut object with a tableName set', () => {
       expect(new QueryBuilder().updateIn('user').tableName).to.equals('user');
+    });
+  });
+
+  describe('QueryBuilder#deleteIn', () => {
+
+    it('should throw an error if no table name', () => {
+      assert.throws(new QueryBuilder().deleteIn, Exception);
+    });
+
+    it('should return a RequestPut object when tableName is provided', () => {
+      expect(new QueryBuilder().deleteIn('user')).to.be.an.instanceof(RequestDelete);
+    });
+
+    it('should return a RequestPut object with a tableName set', () => {
+      expect(new QueryBuilder().deleteIn('user').tableName).to.equals('user');
     });
   });
 });
