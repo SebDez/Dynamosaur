@@ -7,7 +7,7 @@ var region = 'eu-west-1'; //default is eu-west-1
 
 //##########################################################
 //GET MOVIES
-new Dynamosaur(region)
+/*new Dynamosaur(region)
   .getIn('Movies')
   .exec()
   .then(res => {
@@ -102,4 +102,14 @@ new Dynamosaur(region)
   console.log('## DELETE MOVIE ', res.data);
 }, err => {
   console.log('## ERROR WHILE DELETING MOVIE : ',err );
-});
+});*/
+
+  new Dynamosaur(region)
+    .getIn('Movies')
+    .where('mylist', 'contains', {'S':'a'})
+    .exec()
+    .then(res => {
+      console.log('## GET MOVIES BY CRITERIA : ','## SIMPLE CASE : ', res.data.Items);
+    }, err => {
+      console.log('## ERROR ON GET MOVIES BY CRITERIA : ',err );
+    });

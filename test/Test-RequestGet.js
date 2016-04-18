@@ -225,6 +225,14 @@ describe('RequestGet', () => {
       expect(req.query.FilterExpression).to.equals('#column = :column AND #column1 = :column1 OR #column2 = :column2');
     });
 
+    it('should set the query FilterExpression with contains condition', () => {
+      const req = new RequestGet();
+      req.query.ExpressionAttributeNames={};
+      req.query.ExpressionAttributeValues={};
+      req.buildParameters('column', 'contains', 'something');
+      expect(req.query.FilterExpression).to.equals('contains(#column, :column)');
+    });
+
   });
 
 });
