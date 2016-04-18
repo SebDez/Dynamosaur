@@ -11,6 +11,13 @@ describe('RequestGet', () => {
       it('should return a function', () => {
         expect(new RequestGet().exec().then).to.be.an.instanceof(Function);
       });
+
+      it('should remove ExpressionAttributeNames when empty', () => {
+        let req = new RequestGet();
+        req.query.ExpressionAttributeNames ={};
+        req.exec();
+        expect(req.query.ExpressionAttributeNames).to.equals(void(0));
+      });
   });
 
   describe('RequestGet#where', () => {
@@ -249,6 +256,38 @@ describe('RequestGet', () => {
       expect(req.query.ExpressionAttributeNames['#column']).to.equals(void(0));
     });
 
+  });
+
+  describe('RequestGet#setFilterExpressionFromParameters', () => {
+      it('should set FilterExpression when not set', () => {
+        let req = new RequestGet();
+        req.setFilterExpressionFromParameters('or', 'a = b');
+        expect(req.query.FilterExpression).to.equals('a = b');
+      });
+
+      it('should update FilterExpression with new content', () => {
+        let req = new RequestGet();
+        req.query.FilterExpression='a = b'
+        req.setFilterExpressionFromParameters('or', 'c = d');
+        expect(req.query.FilterExpression).to.equals('a = b or c = d');
+      });
+  });
+
+  describe('RequestGet#getExpressionFromParameters', () => {
+      it('should return an operator expression', () => {
+        expect(new RequestGet().getExpressionFromParameters('col', '#c', '=', ':c', false))
+        .to.equals('#c = :c');
+      });
+
+      it('should return a contains expression', () => {
+        expect(new RequestGet().getExpressionFromParameters('col', '#c', 'contains', ':c', false))
+        .to.equals('contains(#c, :c)');
+      });
+
+      it('should return an expression in "withchild" case', () => {
+        expect(new RequestGet().getExpressionFromParameters('col.child', '#c', '=', ':c', true))
+        .to.equals('col.child = :c');
+      });
   });
 
 });
