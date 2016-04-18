@@ -233,6 +233,22 @@ describe('RequestGet', () => {
       expect(req.query.FilterExpression).to.equals('contains(#column, :column)');
     });
 
+    it('should set the FilterExpression when column has a child given', () => {
+      const req = new RequestGet();
+      req.query.ExpressionAttributeNames={};
+      req.query.ExpressionAttributeValues={};
+      req.buildParameters('column.child', '=', 'something');
+      expect(req.query.FilterExpression).to.equals('column.child = :column');
+    });
+
+    it('should set the ExpressionAttributeNames when column has a child given', () => {
+      const req = new RequestGet();
+      req.query.ExpressionAttributeNames={};
+      req.query.ExpressionAttributeValues={};
+      req.buildParameters('column.child', '=', 'something');
+      expect(req.query.ExpressionAttributeNames['#column']).to.equals(void(0));
+    });
+
   });
 
 });
